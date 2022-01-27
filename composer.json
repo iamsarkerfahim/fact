@@ -22,6 +22,7 @@
         "ext-json": "*"
     },
     "require-dev": {
+        "symfony/debug-bundle": "5.4.*",
         "symfony/maker-bundle": "^1.36"
     },
     "config": {
