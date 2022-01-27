@@ -44,6 +44,11 @@ The application takes a simple JSON based DSL as an input. Then performs followi
 - you shoud see this
 ![Fact home page](https://i.ibb.co/sK880VV/fact.png)
 
+# Test
+- Input **Security name = ABC** and **Expression = {"fn": "*", "a": "sales", "b": 2}** you should see the message **The result for the security 'ABC' is '8'**
+- Input **Security name = FAKE** and **Expression = {"fn": "*", "a": "sales", "b": 2}** you should see the message **The security name 'Fake' seems to be incorrect**
+- Input **Security name = ABC** and **Expression = {"fn": "????", "a": "sales", "b": 2}** you should see the message **The value of the key 'fn' seems to be incorrect**
+
 # Further Improvement
 1) add a firewall to make sure api only accepted from the relevant IP
 2) Improve UI to collect the data to build the expression
