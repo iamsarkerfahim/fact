@@ -11,6 +11,11 @@ use League\Csv\UnavailableFeature;
 
 class CSVHandler extends FileHandler
 {
+    protected function getReader()
+    {
+        return Reader::createFromPath($this->filePath);
+    }
+
     /**
      * @throws InvalidArgument
      * @throws UnavailableFeature
@@ -22,7 +27,7 @@ class CSVHandler extends FileHandler
         $this->setFilePath($filePath);
 
         /** @var Reader $csvReader */
-        $csvReader = Reader::createFromPath($this->filePath);
+        $csvReader = $this->getReader();
         $csvReader->setHeaderOffset(0);
         /** @var string $inputBom */
         $inputBom = $csvReader->getInputBOM();

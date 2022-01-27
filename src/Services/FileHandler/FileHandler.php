@@ -5,9 +5,11 @@ namespace App\Services\FileHandler;
 
 use App\Services\BaseService;
 
-class FileHandler extends BaseService
+abstract class FileHandler extends BaseService
 {
     protected $filePath;
+
+    protected abstract function getReader();
 
     /**
      * @throws \Exception
