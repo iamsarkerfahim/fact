@@ -31,7 +31,7 @@ The application takes a simple JSON based DSL as an input. Then performs followi
 </code> 
 
 # Tech Scope
-- 5.4
+- Symfony 5.4
 - PHP 7.4
 - JQuery 3.6
 - Bootstrap 5.0
