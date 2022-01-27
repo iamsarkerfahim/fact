@@ -8,7 +8,7 @@ The application takes a simple JSON based DSL as an input. Then performs followi
     - a and b: is number or another expression or exists in **dataSource/attributes.csv*
 - perform the calculation recursively based on the expression
 
-### Sample expressions
+# Sample expressions
 <code>
 {
   "expression": {"fn": "*", "a": "sales", "b": 2},
