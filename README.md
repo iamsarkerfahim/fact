@@ -38,6 +38,7 @@ The application takes a simple JSON based DSL as an input. Then performs followi
 
 # How to run
 - cd into the project root
+- run **composer install**
 - run **symfony server:start** (you may need to install symfony cli from https://symfony.com/download)
 - go to http://127.0.0.1:39419/ (ip address and port number may chnaged, please the output from the server:start)
 
