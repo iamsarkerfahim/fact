@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#response').hide();
+            $("#dataAnalysisForm").submit(function (e) {
+                e.preventDefault();
+                let form = $(this);
+
+                $.ajax({
+                    type: "POST",
+                    url: '/fact',
+                    data: form.serialize(),
+                    success: function (data) {
+                        form[0].reset();
+                        $('#response').show();
+                        $('#response').show().removeClass("alert-danger").addClass("alert-primary");
+                        $('#responseMessage').text(data.message);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#response').show().removeClass("alert-primary").addClass("alert-danger");
+                        $('#responseMessage').text(JSON.parse(xhr.responseText).message);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="text-center">Data Analyzer</h1>
+        <div id="response" class="alert alert-primary alert-dismissible fade show" role="alert">
+            <span id="responseMessage"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <form id="dataAnalysisForm">
+        <div class="mb-3">
+            <label for="securityName">Security name</label>
+            <input type="text" class="form-control" id="securityName" name="securityName"
+                   placeholder="Input security name">
+        </div>
+        <div class="mb-3">
+            <label for="expression">Expression</label>
+            <textarea class="form-control" id="expression" name="expression"></textarea>
+            <div id="expressionHelp" class="form-text">
+                e.g. {"fn": "*", "a": "sales", "b": 2}
+                <br>or {
+                "fn": "-",
+                "a": {"fn": "-", "a": "eps", "b": "shares"},
+                "b": {"fn": "-", "a": "assets", "b": "liabilities"}
+                }
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
