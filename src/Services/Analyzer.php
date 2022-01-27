@@ -106,13 +106,12 @@ class Analyzer extends BaseService
     }
 
     /**
-     * @return array|int
      * @throws UnavailableFeature
      * @throws DataAnalyzeException
      * @throws Exception
      * @throws InvalidArgument
      */
-    private function getValueOfArgument($argumentInitialValue)
+    private function getValueOfArgument($argumentInitialValue): float
     {
         if (is_array($argumentInitialValue)) {
             /** @var array $expression */
@@ -144,7 +143,7 @@ class Analyzer extends BaseService
         throw new DataAnalyzeException("Can not identify the argument");
     }
 
-    private function getCalculatedValue(array $finalExpression)
+    private function getCalculatedValue(array $finalExpression): float
     {
         switch ($finalExpression['fn']) {
             case '+':
